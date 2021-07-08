@@ -35,49 +35,81 @@ let Hydra = {
     attackDamage:10,
 
 }
+
+// Global stats
 let hero = hercules
 let enemy = lion
+let heroHp = hero.hp
+let enemyHp = enemy.hp
+
+startgame()
 
 function startgame(){
-    introToTheGameStory
+    introToTheGameStory()
 
 } // button will start the game
 
 
 function introToTheGameStory(){
     alert("King Eurystheus giving you the 3 trials")
-
+    startOfTheFirstQuestfight()
 }// bring given the quest before the fight 
 
 function startOfTheFirstQuestfight(){
     alert("the battle with the vicious Nemean Lion")
-
+    while(heroHp || enemyHp > 0)
+    heroAttackChoice(hero)
+    whichEnemyAttack(enemy)
+    if(heroHp <= 0){
+        alert("You have died!")
+        introToTheGameStory()
+    }   
+    else if(enemyHp = 0){
+        alert("You killed it")
+    } 
 }// this will start the first fight
 
-function heroAttackChoice (){
-    hero = hero.attackNames
-    HeroAttackBeingMade = prompt (hero);
-    switch(HeroAttackBeingMade){
-        case(hero[0]):
+
+
+
+
+
+
+
+
+
+function heroAttackChoice (hero){
+    heroAttackNames = hero.attackNames
+    heroAttackBeingMade = prompt (heroAttackNames);
+    switch(heroAttackBeingMade){
+        case(heroAttackNames[0]):
             break;
-        case(hero[1]):
+        case(heroAttackNames[1]):
             break;
-        case(hero[2]):
+        case(heroAttackNames[2]):
             break;
         default:
             heroAttackChoice()
     }        
+    console.log(heroAttackBeingMade)
+    damageDone(hero)
     return heroAttackBeingMade
 }
 
 function damageDone (heroOrEnemy){
     let DoingDamage = heroOrEnemy.attackDamage
     damageDelt = Math.floor(Math.random() * DoingDamage)
+    if(heroOrEnemy = hero){
+    enemyhp = damageDelt - enemyHp
+    }
+    else if(heroOrEnemy == enemy){
+    heroHp = damageDelt - heroHp
+    }
+    console.log(damageDelt)
     return  damageDelt
-    
 }
 
-console.log(damageDone(hero))
+
 
 
 function whichEnemyAttack(enemy){
@@ -85,9 +117,12 @@ function whichEnemyAttack(enemy){
     if(enemy){
         let thisAttack = Math.floor(Math.random() *  enemy.length);
         let enemyAttackBeingMade = enemy[thisAttack]
-        console.log(enemyAttackBeingMade)
+        
     }
+    console.log(enemyAttackBeingMade)
+    damageDone(enemy)
+    
+} 
 
-}
 
 
