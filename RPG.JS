@@ -3,54 +3,22 @@
 // let Lion = "Nemean Lion";
 // let Hydra = "impossible nine-headed Lernaean Hydra";
 // let Cerberus = "guard dog of the underworld";
-// let hero = hercules;
-// let enemy = lion
 //HERO Info
-let heroHp = 1;
-let enemyHp= 1;
-let heroPower = "";;
-//MonsterHp
-let lionHp = "";
-let HydraHp = "";
-let CerberusHp = "";
-
 //Damage math   
-let damageTaken = "";
-
-function howMuchDamage (){
-    let Power = Math.floor(Math.random() * attackArr.length);
-    let damageTaken= attackArr[Power];
-    
-    console.log(damageTaken);
-    return damageTaken;
-
-}
-
-
 //which attack
-
-function whichAttack(enemy){
-    enemy = enemy.attackNames
-    if(enemy){
-        let thisAttack = Math.floor(Math.random() *  enemy.length);
-        let attackName = enemy[thisAttack]
-        console.log(attackName)
-    }
-
-}
 
 
 let hercules = {
     hp: 100,
     attackNames: ["stab", "slash", "slam"],
-    attackArr: [1, 2, 3, 4, 5]
+    attackDamage: [20]
     
 
 }
 let Cerberus = {
     hp: 25,
     attackNames: ["Bite", "claw", "Flame Breath"],
-    attackDamage: 4,
+    attackDamage: 10,
 }
 
 let lion = {
@@ -67,41 +35,59 @@ let Hydra = {
     attackDamage:10,
 
 }
+let hero = hercules
+let enemy = lion
+
+function startgame(){
+    introToTheGameStory
+
+} // button will start the game
 
 
-function heroChooseAttack(userAttackChoice){
+function introToTheGameStory(){
+    alert("King Eurystheus giving you the 3 trials")
 
+}// bring given the quest before the fight 
+
+function startOfTheFirstQuestfight(){
+    alert("the battle with the vicious Nemean Lion")
+
+}// this will start the first fight
+
+function heroAttackChoice (){
+    hero = hero.attackNames
+    HeroAttackBeingMade = prompt (hero);
+    switch(HeroAttackBeingMade){
+        case(hero[0]):
+            break;
+        case(hero[1]):
+            break;
+        case(hero[2]):
+            break;
+        default:
+            heroAttackChoice()
+    }        
+    return heroAttackBeingMade
 }
 
-
-let enemy = lion
-console.log(whichAttack(enemy))
-
-
-
-
-// function heroChooseAttack(){
-//     userAttackChoice = prompt()
-        
+function damageDone (heroOrEnemy){
+    let DoingDamage = heroOrEnemy.attackDamage
+    damageDelt = Math.floor(Math.random() * DoingDamage)
+    return  damageDelt
     
-//         switch(userAttackChoice){
-//             case 0:
-                
-//                 break;            
-//             case 1:
-//                 break;          
-//             case 2:
-//                 break;
-                
-//             }          
-//     }
-// }
+}
+
+console.log(damageDone(hero))
 
 
-// heroFight(hero)
+function whichEnemyAttack(enemy){
+    enemy = enemy.attackNames
+    if(enemy){
+        let thisAttack = Math.floor(Math.random() *  enemy.length);
+        let enemyAttackBeingMade = enemy[thisAttack]
+        console.log(enemyAttackBeingMade)
+    }
 
-// while(heroHp > 0 && enemyHp > 0){
-
-
+}
 
 
